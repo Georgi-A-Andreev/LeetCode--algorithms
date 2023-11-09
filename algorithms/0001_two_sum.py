@@ -12,4 +12,12 @@ print(Solution().twoSum([2, 4, 6], 6))
 
 class Solution(object):  # More efficient way
     def twoSum(self, nums, target):
-        pass
+        dict = {}
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in dict:
+                return [dict[complement], i]
+            dict[nums[i]] = i
+
+
+print(Solution().twoSum([2, 4, 6], 6))
