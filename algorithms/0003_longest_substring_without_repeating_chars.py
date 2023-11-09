@@ -17,4 +17,19 @@ class Solution(object):  # working brute force solution
             results.append(counter)
         return max(results)
 
-print(Solution().lengthOfLongestSubstring('abcabcbb'))
+# print(Solution().lengthOfLongestSubstring('abcabcbb'))
+
+
+class Solution(object):  # sliding window
+    def lengthOfLongestSubstring(self, s):
+        j = 0
+        dict = {}
+        counter = 0
+        for i in range(len(s)):
+            if s[i] in dict:
+                j = max(dict[s[i]], j)
+
+            counter = max(counter, i - j + 1)
+            dict[s[i]] = i + 1
+
+        return counter
